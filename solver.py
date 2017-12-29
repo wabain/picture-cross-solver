@@ -64,35 +64,36 @@ def generate_possibilities(entries, cons):
 
 
 def generate_bounded(entries, cons, start_idx):
-    for i in range(start_idx, len(entries)):
-        if entries[i] is not None:
-            continue
+    """
+    Recursively generate all possible assignments, starting with the next
+    unassigned value after start_idx
+    """
+    try:
+        i = entries.index(None, start_idx)
+    except ValueError:
+        # Base case: fully assigned
+        if is_consistent(entries, cons):
+            return [entries]
 
-        bounded = []
+        return []
 
-        # Restriction: true
-        v_true = list(entries)
-        v_true[i] = True
+    # Restriction: true
+    v_true = list(entries)
+    v_true[i] = True
 
-        # Restriction: false
-        v_false = list(entries)
-        v_false[i] = False
+    # Restriction: false
+    v_false = list(entries)
+    v_false[i] = False
 
-        if is_pruneable(v_true, cons, i + 1):
-            return generate_bounded(v_false, cons, i + 1)
+    if is_pruneable(v_true, cons, i + 1):
+        return generate_bounded(v_false, cons, i + 1)
 
-        bounded = generate_bounded(v_true, cons, i + 1)
+    bounded = generate_bounded(v_true, cons, i + 1)
 
-        if not is_pruneable(v_false, cons, i + 1):
-            bounded += generate_bounded(v_false, cons, i + 1)
+    if not is_pruneable(v_false, cons, i + 1):
+        bounded += generate_bounded(v_false, cons, i + 1)
 
-        return bounded
-
-    # Base case: fully assigned
-    if is_consistent(entries, cons):
-        return [entries]
-
-    return []
+    return bounded
 
 
 def is_pruneable(values, cons, end_idx):
