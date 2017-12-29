@@ -29,7 +29,7 @@ def solve_puzzle(puzzle):
         process_constraints(puzzle=puzzle, grid=grid)
 
         if iteration >= ALLOWED_ITERATIONS:
-            break
+            raise RuntimeError('Allowed iterations exceeded')
 
     print_grid(grid)
 
