@@ -14,13 +14,14 @@ $ pip install -r requirements.txt
 The solver takes a JSON file as input. See the included files for the input format.
 
 ```bash
-$ time python ./solver.py demo.json
-✗▓▓▓▓▓▓▓
-▓▓▓▓▓▓▓▓
-✗▓▓✗✗▓▓✗
-✗▓▓✗✗▓▓✗
-✗▓▓✗✗▓▓✗
-✗▓▓✗✗▓▓✗
-✗▓▓✗✗✗▓▓
-python ./solver.py demo.json  0.07s user 0.01s system 81% cpu 0.105 total
+$ time python solver.py ./demo.json
+✗ ▓ ▓ ▓ ▓ ▓ ▓ ▓
+▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓
+✗ ▓ ▓ ✗ ✗ ▓ ▓ ✗
+✗ ▓ ▓ ✗ ✗ ▓ ▓ ✗
+✗ ▓ ▓ ✗ ✗ ▓ ▓ ✗
+✗ ▓ ▓ ✗ ✗ ▓ ▓ ✗
+✗ ▓ ▓ ✗ ✗ ✗ ▓ ▓
+✗ ✗ ▓ ▓ ✗ ✗ ▓ ▓
+python solver.py ./demo.json  0.07s user 0.01s system 90% cpu 0.086 total
 ```

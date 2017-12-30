@@ -176,7 +176,7 @@ def print_grid(grid):
         None: '?',
     }
     for row in grid:
-        print(*(formatting[value] for value in row), sep='')
+        print(*(formatting[value] for value in row), sep=' ')
 
 
 def validate_puzzle(puzzle):
